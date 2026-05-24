@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayvo — Your Voice, Every Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amber-primary: #E8A838;
+            --amber-light: #FFF8EC;
+            --amber-dark: #C48A20;
+            --amber-vibrant: #F5B742;
+            --blue-primary: #2D7BF5;
+            --blue-light: #EBF3FF;
+            --blue-dark: #1A5BC4;
+            --bg-white: #FFFFFF;
+            --bg-light: #FAFAF8;
+            --bg-warm: #FDF9F3;
+            --text-dark: #1A1D1F;
+            --text-body: #3D4449;
+            --text-muted: #6F7B7E;
+            --text-light: #9BA5A8;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --shadow-phone: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-name {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber-primary);
+        }
+
+        .nav-cta {
+            background: var(--amber-primary);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--amber-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(232, 168, 56, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 32px 80px;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--amber-light);
+            color: var(--amber-dark);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--amber-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--amber-primary), var(--amber-vibrant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 56px;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text-dark);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .store-btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .store-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .store-btn-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .store-btn-text small {
+            font-size: 0.65rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        /* Mascot Hero */
+        .hero-mascot {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero-mascot img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.1));
+            animation: mascotFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-mascot-ring {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 2px dashed rgba(232, 168, 56, 0.25);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 25s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Voice Orb */
+        .voice-orb-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .voice-orb-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            z-index: 0;
+            opacity: 0.85;
+            pointer-events: none;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .voice-orb-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+
+        .voice-orb-wrapper h1,
+        .voice-orb-wrapper .hero-description {
+            position: relative;
+            z-index: 1;
+        }
+
+        .voice-orb-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(232, 168, 56, 0.1);
+            border: 1.5px solid rgba(232, 168, 56, 0.3);
+            color: var(--amber-dark);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            z-index: 1;
+            margin-top: 16px;
+        }
+
+        .voice-orb-toggle:hover {
+            background: rgba(232, 168, 56, 0.18);
+            border-color: var(--amber-primary);
+            transform: translateY(-1px);
+        }
+
+        .voice-orb-toggle.active {
+            background: var(--amber-primary);
+            border-color: var(--amber-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(232, 168, 56, 0.35);
+        }
+
+        .voice-orb-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .voice-orb-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .voice-orb-container {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 260px;
+            margin: 0 auto;
+            background: #1A1D1F;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: var(--shadow-phone);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 9/19;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 24px;
+            background: #1A1D1F;
+            border-radius: 0 0 16px 16px;
+            z-index: 2;
+        }
+
+        /* Voice Recording UI inside phone */
+        .voice-ui {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 44px 16px 20px;
+            background: linear-gradient(180deg, var(--amber-light) 0%, white 50%);
+        }
+
+        .voice-ui-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--amber-light);
+            border: 3px solid var(--amber-primary);
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .voice-ui-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .voice-ui-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .voice-ui-subtitle {
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .voice-ui-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--amber-dark);
+            background: var(--amber-light);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .voice-lines {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 8px;
+        }
+
+        .voice-line {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 0.55rem;
+            color: var(--text-body);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .voice-line-icon {
+            width: 16px;
+            height: 16px;
+            background: var(--amber-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .voice-line-icon svg {
+            width: 8px;
+            height: 8px;
+            fill: white;
+        }
+
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 12px;
+        }
+
+        .voice-wave-bar {
+            width: 3px;
+            background: var(--amber-primary);
+            border-radius: 2px;
+            animation: waveBar 1.2s ease-in-out infinite;
+        }
+
+        .voice-wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+        .voice-wave-bar:nth-child(2) { height: 14px; animation-delay: 0.1s; }
+        .voice-wave-bar:nth-child(3) { height: 20px; animation-delay: 0.2s; }
+        .voice-wave-bar:nth-child(4) { height: 14px; animation-delay: 0.3s; }
+        .voice-wave-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+        .voice-wave-bar:nth-child(6) { height: 16px; animation-delay: 0.5s; }
+        .voice-wave-bar:nth-child(7) { height: 8px; animation-delay: 0.6s; }
+
+        @keyframes waveBar {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.4); }
+        }
+
+        .voice-record-btn {
+            margin-top: 14px;
+            background: var(--amber-primary);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto 56px;
+            line-height: 1.6;
+        }
+
+        /* Voice Clone Section */
+        .voice-clone-section {
+            padding: 80px 32px;
+            background: var(--bg-warm);
+        }
+
+        .voice-clone-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .voice-clone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .voice-feature-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(232, 168, 56, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .voice-feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(232, 168, 56, 0.2);
+        }
+
+        .voice-feature-card .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-amber { background: var(--amber-light); }
+        .icon-blue { background: var(--blue-light); }
+
+        .voice-feature-card .card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .icon-amber svg { stroke: var(--amber-primary); }
+        .icon-blue svg { stroke: var(--blue-primary); }
+
+        .voice-feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .voice-feature-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: var(--amber-light);
+            color: var(--amber-dark);
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .feature-tag-blue {
+            background: var(--blue-light);
+            color: var(--blue-primary);
+        }
+
+        /* How It Works Section */
+        .steps-section {
+            padding: 100px 32px;
+        }
+
+        .steps-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 56px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 18%;
+            right: 18%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--amber-primary), var(--blue-primary));
+            opacity: 0.2;
+            border-radius: 2px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step:nth-child(1) .step-number { background: var(--amber-primary); }
+        .step:nth-child(2) .step-number { background: linear-gradient(135deg, var(--amber-primary), var(--blue-primary)); }
+        .step:nth-child(3) .step-number { background: var(--blue-primary); }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0.15;
+        }
+
+        .step:nth-child(1) .step-number::after { border-color: var(--amber-primary); }
+        .step:nth-child(2) .step-number::after { border-color: var(--amber-primary); }
+        .step:nth-child(3) .step-number::after { border-color: var(--blue-primary); }
+
+        .step h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .step-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--amber-dark);
+            background: var(--amber-light);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        /* Use Cases Section */
+        .use-cases-section {
+            padding: 100px 32px;
+            background: var(--bg-warm);
+        }
+
+        .use-cases-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .use-case-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(232, 168, 56, 0.15);
+        }
+
+        .use-case-emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .use-case-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .use-case-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Digital Avatar Section */
+        .avatar-section {
+            padding: 100px 32px;
+        }
+
+        .avatar-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .avatar-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: left;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .avatar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .avatar-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-card-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .avatar-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .avatar-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .style-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .style-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-body);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 32px;
+            text-align: center;
+        }
+
+        .cta-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1A1D1F 0%, #2D3238 100%);
+            border-radius: var(--radius-xl);
+            padding: 64px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.15) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(45, 123, 245, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .cta-mascot {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+        }
+
+        .cta-card h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-card p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--amber-primary);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 16px rgba(232, 168, 56, 0.4);
+        }
+
+        .cta-btn:hover {
+            background: var(--amber-vibrant);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 168, 56, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 48px 32px;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .footer-brand span {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .footer p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .voice-clone-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .voice-clone-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .avatar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .section, .steps-section, .avatar-section, .cta-section {
+                padding: 72px 20px;
+            }
+
+            .voice-clone-section, .use-cases-section {
+                padding: 60px 20px;
+            }
+
+            .phone-mockup {
+                width: 220px;
+            }
+
+            .cta-card {
+                padding: 48px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-mascot img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <img src="UGC_brand_assets/single.png" alt="Wayvo">
+            </div>
+            <span class="nav-name">Wayvo</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+        </ul>
+        <a href="#download" class="nav-cta">Create Your Voice</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge reveal">AI Voice Cloning</div>
+
+        <div class="hero-mascot reveal">
+            <div class="hero-mascot-ring"></div>
+            <img src="UGC_brand_assets/single.png" alt="Wayvo Mascot">
+        </div>
+
+        <div class="voice-orb-wrapper reveal reveal-delay-1">
+            <div class="voice-orb-container" id="voiceOrb"></div>
+            <h1>Your Voice.<br><span class="accent">Every Journey.</span></h1>
+            <p class="hero-description">
+                Create your custom navigation voice pack in just 1 minute. Record 3 sentences and let AI clone your voice for every turn, every alert, every mile.
+            </p>
+            <button class="voice-orb-toggle" id="voiceOrbToggle" aria-label="Toggle voice control">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+                <span id="voiceOrbLabel">Try Voice Control</span>
+            </button>
+        </div>
+        <div class="store-buttons reveal reveal-delay-3">
+            <a href="#" class="store-btn">
+                <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                <span class="store-btn-text"><small>Download on the</small>App Store</span>
+            </a>
+            <a href="#" class="store-btn">
+                <svg viewBox="0 0 24 24"><path d="M3.18 23.02L13.38 12 3.18.98c-.38.41-.18 1.02-.18 1.02l.01 20c0 .5.17 1.02.17 1.02zm1.56.72l11.38-6.38-2.5-2.5-8.88 8.88zm11.38-17.38L4.74.24 13.62 9.12l2.5-2.5zM21.82 11l-3.5-2-3.18 3 3.18 3 3.5-2c.78-.44.78-1.56 0-2z"/></svg>
+                <span class="store-btn-text"><small>Get it on</small>Google Play</span>
+            </a>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="reveal">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="phone-notch"></div>
+                    <div class="voice-ui">
+                        <div class="voice-ui-avatar">
+                            <img src="UGC_brand_assets/single.png" alt="Avatar">
+                        </div>
+                        <div class="voice-ui-title">Custom Voice Pack</div>
+                        <div class="voice-ui-subtitle">Record 3 sentences to begin</div>
+                        <div class="voice-ui-label">Recording</div>
+                        <div class="voice-lines">
+                            <div class="voice-line">
+                                <div class="voice-line-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                                Turn left ahead
+                            </div>
+                            <div class="voice-line">
+                                <div class="voice-line-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                                You have arrived
+                            </div>
+                            <div class="voice-line">
+                                <div class="voice-line-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                                Speed camera ahead
+                            </div>
+                        </div>
+                        <div class="voice-wave">
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                            <div class="voice-wave-bar"></div>
+                        </div>
+                        <button class="voice-record-btn">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+                            Recording...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="voice-clone-section" id="features">
+        <div class="voice-clone-content">
+            <h2 class="section-title reveal">Clone your voice with<br>industry-leading AI</h2>
+            <p class="section-subtitle reveal reveal-delay-1">3 sentences. 90%+ voice fidelity. The most advanced voice cloning technology, built for navigation.</p>
+
+            <div class="voice-clone-grid">
+                <div class="voice-feature-card reveal">
+                    <div class="card-icon icon-amber">
+                        <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+                    <h3>Ultra-Light Recording</h3>
+                    <p>Just 3 sentences generates a full voice pack. TTS LLM with lightweight model fine-tuning achieves 90%+ voice fidelity.</p>
+                    <span class="feature-tag">90%+ Accuracy</span>
+                </div>
+                <div class="voice-feature-card reveal reveal-delay-1">
+                    <div class="card-icon icon-blue">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Digital Avatar</h3>
+                    <p>Upload a photo to generate hand-drawn, cartoon, or 3D digital avatars that assist with navigation and smart interactions.</p>
+                    <span class="feature-tag feature-tag-blue">Multiple Styles</span>
+                </div>
+                <div class="voice-feature-card reveal reveal-delay-2">
+                    <div class="card-icon icon-amber">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Instant Generation</h3>
+                    <p>Voice packs ready in 5-10 minutes, avatars in under 3. On-device inference means near-zero latency during playback.</p>
+                    <span class="feature-tag">Ultra Fast</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section" id="how-it-works">
+        <div class="steps-content">
+            <h2 class="section-title reveal">Three steps to your<br>personal voice pack</h2>
+            <p class="section-subtitle reveal reveal-delay-1">From recording to navigating — faster than making coffee.</p>
+
+            <div class="steps-grid">
+                <div class="step reveal">
+                    <div class="step-number">1</div>
+                    <h3>Record 3 Sentences</h3>
+                    <p>Open the app, grant mic access, and read 3 short prompts aloud. That's all we need.</p>
+                    <span class="step-duration">~1 minute</span>
+                </div>
+                <div class="step reveal reveal-delay-1">
+                    <div class="step-number">2</div>
+                    <h3>AI Clones Your Voice</h3>
+                    <p>Our edge-cloud hybrid engine analyzes your tone, pitch, and cadence to create a full voice model.</p>
+                    <span class="step-duration">5-10 minutes</span>
+                </div>
+                <div class="step reveal reveal-delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Navigate with You</h3>
+                    <p>Activate your pack for driving, transit, cycling, or walking. Every direction, in your voice.</p>
+                    <span class="step-duration">Instant activation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases-section" id="use-cases">
+        <div class="use-cases-content">
+            <h2 class="section-title reveal">Voice for every moment</h2>
+            <p class="section-subtitle reveal reveal-delay-1">From romantic surprises to everyday comfort — your voice makes every journey personal.</p>
+
+            <div class="use-cases-grid">
+                <div class="use-case-card reveal">
+                    <span class="use-case-emoji">💕</span>
+                    <h4>Love Notes</h4>
+                    <p>Record sweet messages that play as surprise navigation prompts for your partner</p>
+                </div>
+                <div class="use-case-card reveal reveal-delay-1">
+                    <span class="use-case-emoji">👶</span>
+                    <h4>Kid's Voice</h4>
+                    <p>Let your child's adorable voice cure any road rage on the daily commute</p>
+                </div>
+                <div class="use-case-card reveal reveal-delay-2">
+                    <span class="use-case-emoji">🎭</span>
+                    <h4>Fun Characters</h4>
+                    <p>Create playful navigation personas with custom phrases and humor</p>
+                </div>
+                <div class="use-case-card reveal reveal-delay-3">
+                    <span class="use-case-emoji">🏠</span>
+                    <h4>Family Bonds</h4>
+                    <p>Parents' voices guiding you home — a comforting presence on every journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Avatar Section -->
+    <section class="avatar-section">
+        <div class="avatar-content">
+            <h2 class="section-title section-center reveal">Your digital companion<br>on every ride</h2>
+            <p class="section-subtitle reveal reveal-delay-1">Generate a custom avatar that lives in your navigation. Ask questions, get directions, interact with AI — all through your personal digital self.</p>
+
+            <div class="avatar-grid">
+                <div class="avatar-card reveal">
+                    <div class="avatar-card-header">
+                        <div class="avatar-card-icon icon-amber">
+                            <svg viewBox="0 0 24 24" stroke="var(--amber-primary)"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        </div>
+                        <h3>Multiple avatar styles</h3>
+                    </div>
+                    <p>Upload one photo and get hand-drawn, cartoon, or 3D-rendered versions of yourself.</p>
+                    <div class="style-tags">
+                        <span class="style-tag">Hand-drawn</span>
+                        <span class="style-tag">Cartoon</span>
+                        <span class="style-tag">3D</span>
+                    </div>
+                </div>
+                <div class="avatar-card reveal reveal-delay-1">
+                    <div class="avatar-card-header">
+                        <div class="avatar-card-icon icon-blue">
+                            <svg viewBox="0 0 24 24" stroke="var(--blue-primary)"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>Smart AI interactions</h3>
+                    </div>
+                    <p>Your avatar helps with navigation queries, app controls, and provides intelligent voice-powered assistance.</p>
+                    <div class="style-tags">
+                        <span class="style-tag">Ask directions</span>
+                        <span class="style-tag">Voice Q&A</span>
+                    </div>
+                </div>
+                <div class="avatar-card reveal">
+                    <div class="avatar-card-header">
+                        <div class="avatar-card-icon icon-amber">
+                            <svg viewBox="0 0 24 24" stroke="var(--amber-primary)"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                        </div>
+                        <h3>Fun custom broadcasts</h3>
+                    </div>
+                    <p>Record playful phrases for navigation start, speed camera alerts, and arrival — add personality to every ride.</p>
+                    <div class="style-tags">
+                        <span class="style-tag">Custom alerts</span>
+                        <span class="style-tag">Humor</span>
+                    </div>
+                </div>
+                <div class="avatar-card reveal reveal-delay-1">
+                    <div class="avatar-card-header">
+                        <div class="avatar-card-icon icon-blue">
+                            <svg viewBox="0 0 24 24" stroke="var(--blue-primary)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3>Generated in 3 minutes</h3>
+                    </div>
+                    <p>Industry-leading generation speed. Your avatar is ready almost instantly after uploading your photo.</p>
+                    <div class="style-tags">
+                        <span class="style-tag">Ultra-fast</span>
+                        <span class="style-tag">High quality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="download">
+        <div class="cta-card reveal">
+            <img src="UGC_brand_assets/single.png" alt="Wayvo" class="cta-mascot">
+            <h2>Start creating your voice pack</h2>
+            <p>Free to try. One minute to record. A lifetime of personal navigation.</p>
+            <a href="#" class="cta-btn">
+                Create Now — It's Free
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <img src="UGC_brand_assets/single.png" alt="Wayvo">
+            <span>Wayvo</span>
+        </div>
+        <p>Your Voice. Every Journey. Powered by AI Voice Cloning.</p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+
+    <script type="module">
+        import { Renderer, Program, Mesh, Triangle, Vec3 } from 'https://unpkg.com/ogl@1.0.8/dist/ogl.mjs';
+
+        const container = document.getElementById('voiceOrb');
+        const toggleBtn = document.getElementById('voiceOrbToggle');
+        const toggleLabel = document.getElementById('voiceOrbLabel');
+
+        if (container) {
+            const vert = `
+                precision highp float;
+                attribute vec2 position;
+                attribute vec2 uv;
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+
+            const frag = `
+                precision highp float;
+                uniform float iTime;
+                uniform vec3 iResolution;
+                uniform float hue;
+                uniform float hover;
+                uniform float rot;
+                uniform float hoverIntensity;
+                varying vec2 vUv;
+
+                vec3 rgb2yiq(vec3 c) {
+                    float y = dot(c, vec3(0.299, 0.587, 0.114));
+                    float i = dot(c, vec3(0.596, -0.274, -0.322));
+                    float q = dot(c, vec3(0.211, -0.523, 0.312));
+                    return vec3(y, i, q);
+                }
+
+                vec3 yiq2rgb(vec3 c) {
+                    float r = c.x + 0.956 * c.y + 0.621 * c.z;
+                    float g = c.x - 0.272 * c.y - 0.647 * c.z;
+                    float b = c.x - 1.106 * c.y + 1.703 * c.z;
+                    return vec3(r, g, b);
+                }
+
+                vec3 adjustHue(vec3 color, float hueDeg) {
+                    float hueRad = hueDeg * 3.14159265 / 180.0;
+                    vec3 yiq = rgb2yiq(color);
+                    float cosA = cos(hueRad);
+                    float sinA = sin(hueRad);
+                    float i = yiq.y * cosA - yiq.z * sinA;
+                    float q = yiq.y * sinA + yiq.z * cosA;
+                    yiq.y = i;
+                    yiq.z = q;
+                    return yiq2rgb(yiq);
+                }
+
+                vec3 hash33(vec3 p3) {
+                    p3 = fract(p3 * vec3(0.1031, 0.11369, 0.13787));
+                    p3 += dot(p3, p3.yxz + 19.19);
+                    return -1.0 + 2.0 * fract(vec3(p3.x + p3.y, p3.x + p3.z, p3.y + p3.z) * p3.zyx);
+                }
+
+                float snoise3(vec3 p) {
+                    const float K1 = 0.333333333;
+                    const float K2 = 0.166666667;
+                    vec3 i = floor(p + (p.x + p.y + p.z) * K1);
+                    vec3 d0 = p - (i - (i.x + i.y + i.z) * K2);
+                    vec3 e = step(vec3(0.0), d0 - d0.yzx);
+                    vec3 i1 = e * (1.0 - e.zxy);
+                    vec3 i2 = 1.0 - e.zxy * (1.0 - e);
+                    vec3 d1 = d0 - (i1 - K2);
+                    vec3 d2 = d0 - (i2 - K1);
+                    vec3 d3 = d0 - 0.5;
+                    vec4 h = max(0.6 - vec4(dot(d0, d0), dot(d1, d1), dot(d2, d2), dot(d3, d3)), 0.0);
+                    vec4 n = h * h * h * h * vec4(dot(d0, hash33(i)), dot(d1, hash33(i + i1)), dot(d2, hash33(i + i2)), dot(d3, hash33(i + 1.0)));
+                    return dot(vec4(31.316), n);
+                }
+
+                vec4 extractAlpha(vec3 colorIn) {
+                    float a = max(max(colorIn.r, colorIn.g), colorIn.b);
+                    return vec4(colorIn.rgb / (a + 1e-5), a);
+                }
+
+                const vec3 baseColor1 = vec3(0.611765, 0.262745, 0.996078);
+                const vec3 baseColor2 = vec3(0.298039, 0.760784, 0.913725);
+                const vec3 baseColor3 = vec3(0.062745, 0.078431, 0.600000);
+                const float innerRadius = 0.6;
+                const float noiseScale = 0.65;
+
+                float light1(float intensity, float attenuation, float dist) {
+                    return intensity / (1.0 + dist * attenuation);
+                }
+
+                float light2(float intensity, float attenuation, float dist) {
+                    return intensity / (1.0 + dist * dist * attenuation);
+                }
+
+                vec4 draw(vec2 uv) {
+                    vec3 color1 = adjustHue(baseColor1, hue);
+                    vec3 color2 = adjustHue(baseColor2, hue);
+                    vec3 color3 = adjustHue(baseColor3, hue);
+                    float ang = atan(uv.y, uv.x);
+                    float len = length(uv);
+                    float invLen = len > 0.0 ? 1.0 / len : 0.0;
+                    float n0 = snoise3(vec3(uv * noiseScale, iTime * 0.5)) * 0.5 + 0.5;
+                    float r0 = mix(mix(innerRadius, 1.0, 0.4), mix(innerRadius, 1.0, 0.6), n0);
+                    float d0 = distance(uv, (r0 * invLen) * uv);
+                    float v0 = light1(1.0, 10.0, d0);
+                    v0 *= smoothstep(r0 * 1.05, r0, len);
+                    float cl = cos(ang + iTime * 2.0) * 0.5 + 0.5;
+                    float a = iTime * -1.0;
+                    vec2 pos = vec2(cos(a), sin(a)) * r0;
+                    float d = distance(uv, pos);
+                    float v1 = light2(1.5, 5.0, d);
+                    v1 *= light1(1.0, 50.0, d0);
+                    float v2 = smoothstep(1.0, mix(innerRadius, 1.0, n0 * 0.5), len);
+                    float v3 = smoothstep(innerRadius, mix(innerRadius, 1.0, 0.5), len);
+                    vec3 col = mix(color1, color2, cl);
+                    col = mix(color3, col, v0);
+                    col = (col + v1) * v2 * v3;
+                    col = clamp(col, 0.0, 1.0);
+                    return extractAlpha(col);
+                }
+
+                vec4 mainImage(vec2 fragCoord) {
+                    vec2 center = iResolution.xy * 0.5;
+                    float size = min(iResolution.x, iResolution.y);
+                    vec2 uv = (fragCoord - center) / size * 2.0;
+                    float angle = rot;
+                    float s = sin(angle);
+                    float c = cos(angle);
+                    uv = vec2(c * uv.x - s * uv.y, s * uv.x + c * uv.y);
+                    uv.x += hover * hoverIntensity * 0.1 * sin(uv.y * 10.0 + iTime);
+                    uv.y += hover * hoverIntensity * 0.1 * sin(uv.x * 10.0 + iTime);
+                    return draw(uv);
+                }
+
+                void main() {
+                    vec2 fragCoord = vUv * iResolution.xy;
+                    vec4 col = mainImage(fragCoord);
+                    gl_FragColor = vec4(col.rgb * col.a, col.a);
+                }
+            `;
+
+            // Hue shifted toward amber/gold to match site branding
+            const hueValue = 30;
+            const voiceSensitivity = 1.5;
+            const maxRotationSpeed = 1.2;
+            const maxHoverIntensity = 0.8;
+
+            let audioContext = null;
+            let analyser = null;
+            let microphone = null;
+            let dataArray = null;
+            let mediaStream = null;
+            let isRecording = false;
+
+            function analyzeAudio() {
+                if (!analyser || !dataArray) return 0;
+                analyser.getByteFrequencyData(dataArray);
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) {
+                    const value = dataArray[i] / 255;
+                    sum += value * value;
+                }
+                const rms = Math.sqrt(sum / dataArray.length);
+                return Math.min(rms * voiceSensitivity * 3.0, 1);
+            }
+
+            function stopMicrophone() {
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                    mediaStream = null;
+                }
+                if (microphone) { microphone.disconnect(); microphone = null; }
+                if (analyser) { analyser.disconnect(); analyser = null; }
+                if (audioContext && audioContext.state !== 'closed') {
+                    audioContext.close();
+                    audioContext = null;
+                }
+                dataArray = null;
+            }
+
+            async function initMicrophone() {
+                try {
+                    stopMicrophone();
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, sampleRate: 44100 }
+                    });
+                    mediaStream = stream;
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioContext.state === 'suspended') await audioContext.resume();
+                    analyser = audioContext.createAnalyser();
+                    microphone = audioContext.createMediaStreamSource(stream);
+                    analyser.fftSize = 512;
+                    analyser.smoothingTimeConstant = 0.3;
+                    analyser.minDecibels = -90;
+                    analyser.maxDecibels = -10;
+                    microphone.connect(analyser);
+                    dataArray = new Uint8Array(analyser.frequencyBinCount);
+                    return true;
+                } catch (e) {
+                    console.warn('Microphone access denied:', e);
+                    return false;
+                }
+            }
+
+            // Toggle button
+            toggleBtn.addEventListener('click', async () => {
+                if (!isRecording) {
+                    const success = await initMicrophone();
+                    if (success) {
+                        isRecording = true;
+                        toggleBtn.classList.add('active');
+                        toggleLabel.textContent = 'Listening...';
+                    }
+                } else {
+                    stopMicrophone();
+                    isRecording = false;
+                    toggleBtn.classList.remove('active');
+                    toggleLabel.textContent = 'Try Voice Control';
+                }
+            });
+
+            // WebGL setup
+            const renderer = new Renderer({ alpha: true, premultipliedAlpha: false, antialias: true, dpr: window.devicePixelRatio || 1 });
+            const gl = renderer.gl;
+            gl.clearColor(0, 0, 0, 0);
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            container.appendChild(gl.canvas);
+
+            const geometry = new Triangle(gl);
+            const program = new Program(gl, {
+                vertex: vert,
+                fragment: frag,
+                uniforms: {
+                    iTime: { value: 0 },
+                    iResolution: { value: new Vec3(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height) },
+                    hue: { value: hueValue },
+                    hover: { value: 0 },
+                    rot: { value: 0 },
+                    hoverIntensity: { value: 0 },
+                },
+            });
+            const mesh = new Mesh(gl, { geometry, program });
+
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                if (width === 0 || height === 0) return;
+                renderer.setSize(width * dpr, height * dpr);
+                gl.canvas.style.width = width + 'px';
+                gl.canvas.style.height = height + 'px';
+                program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height);
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            let lastTime = 0;
+            let currentRot = 0;
+            const baseRotationSpeed = 0.3;
+
+            function update(t) {
+                requestAnimationFrame(update);
+                const dt = (t - lastTime) * 0.001;
+                lastTime = t;
+                program.uniforms.iTime.value = t * 0.001;
+
+                if (isRecording) {
+                    const voiceLevel = analyzeAudio();
+                    const voiceRotationSpeed = baseRotationSpeed + (voiceLevel * maxRotationSpeed * 2.0);
+                    if (voiceLevel > 0.05) currentRot += dt * voiceRotationSpeed;
+                    program.uniforms.hover.value = Math.min(voiceLevel * 2.0, 1.0);
+                    program.uniforms.hoverIntensity.value = Math.min(voiceLevel * maxHoverIntensity * 0.8, maxHoverIntensity);
+                } else {
+                    program.uniforms.hover.value = 0;
+                    program.uniforms.hoverIntensity.value = 0;
+                }
+
+                program.uniforms.rot.value = currentRot;
+                gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+                renderer.render({ scene: mesh });
+            }
+            requestAnimationFrame(update);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules/
+.tmp/
+.claude/
+.env
+token.json
+credentials.json
+lovi.care__ref=godly.png
